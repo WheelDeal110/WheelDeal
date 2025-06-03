@@ -16,6 +16,7 @@ export class SignupComponent {
       phone: ['', [Validators.required, Validators.pattern(/^\+?\d{10,15}$/)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
     }, { validators: this.passwordMatchValidator });
   }
 
