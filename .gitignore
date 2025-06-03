@@ -1,0 +1,10 @@
+# Ignore Angular build and cache directories
+.angular/
+/cache/
+
+# Ignore node_modules folder
+node_modules/
+
+# Ignore babel related files
+.babelrc
+babel.config.js
