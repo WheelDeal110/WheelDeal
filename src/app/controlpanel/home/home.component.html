@@ -1,0 +1,70 @@
+<div class="flex h-screen">
+    
+    <aside class="w-64 bg-white h-screen shadow-md hidden md:flex flex-col justify-between transition-all duration-300">
+
+    <div class="p-6 border-b">
+        <h2 class="text-xl font-bold text-gray-800">Wheel Deal Logo</h2>
+    </div>
+
+    <nav class="flex-1 p-4 overflow-y-auto">
+        <ul class="space-y-2 text-gray-700 text-sm">
+
+        <li>
+            <a routerLink="dashboard" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-gray-100 transition-all">
+            <span>📊</span> <span>Dashboard</span>
+            </a>
+        </li>
+
+        <!-- <li>
+            <button (click)="toggleAccounts()" class="flex w-full items-center justify-between px-3 py-2 rounded hover:bg-gray-100 transition-all">
+            <span class="flex items-center gap-2"><span>👤</span> <span>Accounts</span></span>
+            <svg [ngClass]="{ 'rotate-180': showAccounts }" class="h-4 w-4 transform transition-transform duration-200"
+                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 9l-7 7-7-7" />
+            </svg>
+            </button>
+            <ul *ngIf="showAccounts" class="ml-6 mt-1 space-y-1 transition-all">
+            <li>
+                <a routerLink="profile" class="block px-3 py-2 rounded hover:bg-gray-100">🧑 Profile</a>
+            </li>
+            <li>
+                <a routerLink="security" class="block px-3 py-2 rounded hover:bg-gray-100">🔐 Security</a>
+            </li>
+            <li>
+                <a routerLink="wallet" class="block px-3 py-2 rounded hover:bg-gray-100">💰 Wallet</a>
+            </li>
+            </ul>
+        </li>
+
+        <li>
+            <a routerLink="cars" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-gray-100 transition-all">
+            <span>🚘</span> <span>My Cars</span>
+            </a>
+        </li> -->
+        
+        <li>
+            <a routerLink="settings" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-gray-100 transition-all">
+            <span>⚙️</span> <span>Settings</span>
+            </a>
+        </li>
+        </ul>
+    </nav>
+
+    <div class="border-t p-4 flex items-center gap-3">
+        <img src="https://i.pravatar.cc/40" alt="User" class="w-10 h-10 rounded-full" />
+        <div>
+        <p class="text-sm font-semibold text-gray-800">John Doe</p>
+        <p class="text-xs text-gray-500">john@example.com</p>
+        </div>
+    </div>
+    </aside>
+
+     <main class="flex-1 overflow-auto bg-gray-50 p-8">
+
+        <div class="w-full mx-auto">
+        <router-outlet></router-outlet>
+        </div>
+
+    </main>
+ </div>
