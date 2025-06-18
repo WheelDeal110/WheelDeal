@@ -5,19 +5,24 @@ import { ControlpanelRoutingModule } from './controlpanel-routing.module';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CarListingComponent } from './car-listing/car-listing.component';
+import { MyListingsComponent } from './my-listings/my-listings.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
     DashboardComponent,
-    SettingsComponent
+    SettingsComponent,
+    CarListingComponent,
+    MyListingsComponent
   ],
   imports: [
     CommonModule,
     ControlpanelRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ControlpanelModule { }
