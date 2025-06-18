@@ -1,0 +1,70 @@
+<div class="p-6 bg-white dark:bg-black min-h-screen text-black dark:text-white">
+  <h4 class="text-2xl font-bold mb-6 border-b border-gray-300 dark:border-gray-700 pb-2">My Favorites</h4>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div *ngFor="let car of cars" class="border border-gray-300 dark:border-gray-700 rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow duration-300 bg-white dark:bg-gray-900">
+
+      <div class="relative">
+        <span *ngIf="car.status" class="absolute top-2 left-2 bg-gray-800 text-white text-xs font-semibold px-2 py-1 rounded">
+          {{ car.status }}
+        </span>
+        <img [src]="car.imageUrl" [alt]="car.title" class="w-full h-48 object-cover" />
+        
+        <div class="absolute top-2 right-2 flex space-x-2">
+          <button (click)="removeFavorite(car.id)" class="bg-red-600 hover:bg-red-700 text-white rounded-full p-1" aria-label="Remove favorite">
+            <i class="far fa-xmark"></i>
+          </button>
+          <button class="bg-gray-800 hover:bg-gray-700 text-white rounded-full p-1" aria-label="Toggle favorite">
+            <i class="far fa-heart"></i>
+          </button>
+          <button (click)="refreshCar(car.id)" class="bg-gray-800 hover:bg-gray-700 text-white rounded-full p-1" aria-label="Refresh">
+            <i class="far fa-arrows-repeat"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="p-4">
+        <div class="flex justify-between items-center mb-2">
+          <h4 class="text-lg font-semibold">
+            <a href="#" class="hover:underline">{{ car.title }}</a>
+          </h4>
+          <div class="flex items-center space-x-1 text-yellow-400">
+            <ng-container *ngFor="let star of [1,2,3,4,5]">
+              <i class="fas fa-star" [class.text-gray-400]="star > car.rating"></i>
+            </ng-container>
+            <span class="text-sm text-gray-600 dark:text-gray-400 ml-2">{{ car.rating }}.0 ({{ car.reviews }})</span>
+          </div>
+        </div>
+
+        <ul class="text-sm text-gray-700 dark:text-gray-300 space-y-1 mb-4">
+          <li><i class="far fa-steering-wheel mr-2"></i>{{ car.transmission }}</li>
+          <li><i class="far fa-car mr-2"></i>Model: {{ car.model }}</li>
+          <li><i class="far fa-road mr-2"></i>{{ car.mileage }}</li>
+          <li><i class="far fa-gas-pump mr-2"></i>{{ car.fuelType }}</li>
+        </ul>
+
+        <div class="flex justify-between items-center">
+          <span class="font-bold text-lg">{{ car.price }}</span>
+          <a href="#" class="bg-black dark:bg-white text-white dark:text-black px-3 py-1 rounded hover:opacity-90 transition">
+            <i class="far fa-eye mr-1"></i> Details
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination placeholder -->
+  <div class="mt-8 flex justify-center">
+    <nav aria-label="Page navigation" class="inline-flex space-x-2 text-gray-700 dark:text-gray-300">
+      <button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" aria-label="Previous page">
+        <i class="far fa-angle-double-left"></i>
+      </button>
+      <button class="p-2 rounded bg-black dark:bg-white text-white dark:text-black font-semibold">1</button>
+      <button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700">2</button>
+      <button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700">3</button>
+      <button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" aria-label="Next page">
+        <i class="far fa-angle-double-right"></i>
+      </button>
+    </nav>
+  </div>
+</div>
