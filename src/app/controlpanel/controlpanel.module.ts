@@ -8,6 +8,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarListingComponent } from './car-listing/car-listing.component';
 import { MyListingsComponent } from './my-listings/my-listings.component';
+import { MyFavComponent } from './my-fav/my-fav.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { MyListingsComponent } from './my-listings/my-listings.component';
     DashboardComponent,
     SettingsComponent,
     CarListingComponent,
-    MyListingsComponent
+    MyListingsComponent,
+    MyFavComponent
   ],
   imports: [
     CommonModule,

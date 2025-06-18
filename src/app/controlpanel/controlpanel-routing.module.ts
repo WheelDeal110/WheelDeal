@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
 import { CarListingComponent } from './car-listing/car-listing.component';
 import { MyListingsComponent } from './my-listings/my-listings.component';
+import { MyFavComponent } from './my-fav/my-fav.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
       { path: 'settings', component: SettingsComponent   },
       { path: 'carListing', component: CarListingComponent   },
       { path: 'myListing', component: MyListingsComponent   },
+      { path: 'myFav', component: MyFavComponent   },
     ]
   }
 ];
