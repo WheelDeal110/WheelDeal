@@ -1,0 +1,62 @@
+<div class="mx-auto p-6 bg-white rounded-lg shadow-md mt-8">
+  <h1 class="text-3xl font-semibold mb-6 text-gray-800">My Car Listings</h1>
+
+  <div class="overflow-x-auto">
+    <table class="min-w-full table-auto">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Brand</th>
+          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Publish Date</th>
+          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Price</th>
+          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Views</th>
+          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Status</th>
+          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let car of cars" class="hover:bg-gray-100 transition-colors duration-200">
+          <td class="px-6 py-4 flex items-center space-x-4">
+            <img [src]="car.imageUrl" alt="{{car.title}}" class="w-16 h-10 rounded object-cover flex-shrink-0" />
+            <div>
+              <div class="font-semibold text-gray-900">{{ car.brand }}</div>
+              <div class="text-sm text-gray-600">{{ car.title }}</div>
+            </div>
+          </td>
+          <td class="px-6 py-4 text-gray-700">{{ car.publishDate | date:'mediumDate' }}</td>
+          <td class="px-6 py-4 text-gray-700">${{ car.price | number }}</td>
+          <td class="px-6 py-4 text-gray-700">{{ car.views }}</td>
+          <td class="px-6 py-4">
+            <span
+              [ngClass]="{
+                'bg-green-100 text-green-800': car.active,
+                'bg-red-100 text-red-800': !car.active
+              }"
+              class="px-3 py-1 rounded-full font-semibold text-sm select-none"
+            >
+              {{ car.active ? 'Active' : 'Inactive' }}
+            </span>
+          </td>
+          <td class="px-6 py-4 text-gray-700 flex space-x-4">
+            <!-- View Icon -->
+            <button (click)="viewCar(car)" title="View" class="hover:text-blue-600 transition-colors duration-200">
+              <img src="\assets\icons8-eye-16.png" alt="">
+            </button>
+
+            <!-- Edit Icon -->
+            <button (click)="editCar(car)" title="Edit" class="hover:text-yellow-500 transition-colors duration-200">
+              <img src="\assets\icons8-edit-16.png" alt="">
+            </button>
+
+            <!-- Delete Icon -->
+            <button (click)="deleteCar(car)" title="Delete" class="hover:text-red-600 transition-colors duration-200">
+              <img src="\assets\icons8-delete-32.png" alt="">
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Optional: Add pagination or filters here -->
+
+</div>

@@ -1,0 +1,255 @@
+<form
+  [formGroup]="listingForm"
+  (ngSubmit)="onSubmit()"
+  class="mx-auto p-6 bg-white rounded shadow space-y-6"
+>
+  <h2 class="text-2xl font-bold mb-6 text-center">Add New Listing</h2>
+
+  <!-- Listing Details -->
+  <section>
+    <h3 class="text-xl font-semibold mb-4 border-b pb-2">Listing Details</h3>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- Title -->
+      <div class="col-span-full">
+        <label class="block font-medium">Listing Title</label>
+        <input
+          formControlName="title"
+          type="text"
+          class="mt-1 block w-full border border-gray-300 rounded px-3 py-2"
+        />
+      </div>
+
+      <!-- Condition -->
+      <div>
+        <label class="block font-medium">Condition</label>
+        <select
+          formControlName="condition"
+          class="mt-1 block w-full border-gray-300 rounded px-3 py-2"
+        >
+          <option value="">Choose</option>
+          <option *ngFor="let c of conditions" [value]="c">{{ c }}</option>
+        </select>
+      </div>
+
+      <!-- Body Type -->
+      <div>
+        <label class="block font-medium">Body Type</label>
+        <select formControlName="bodyType" class="mt-1 w-full rounded px-3 py-2">
+          <option value="">Choose</option>
+          <option *ngFor="let b of bodyTypes" [value]="b">{{ b }}</option>
+        </select>
+      </div>
+
+      <!-- Make -->
+      <div>
+        <label class="block font-medium">Make/Brand</label>
+        <select formControlName="make" class="mt-1 w-full rounded px-3 py-2">
+          <option value="">Choose</option>
+          <option *ngFor="let m of makes" [value]="m">{{ m }}</option>
+        </select>
+      </div>
+
+      <!-- Model -->
+      <div>
+        <label class="block font-medium">Model</label>
+        <select formControlName="model" class="mt-1 w-full rounded px-3 py-2">
+          <option value="">Choose</option>
+          <option *ngFor="let m of models" [value]="m">{{ m }}</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing & Specs -->
+  <section>
+    <h3 class="text-xl font-semibold mb-4 border-b pb-2">Pricing & Specifications</h3>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div>
+        <label class="block font-medium">Price (USD)</label>
+        <input
+          formControlName="price"
+          type="number"
+          class="mt-1 w-full border rounded px-3 py-2"
+        />
+      </div>
+      <div>
+        <label class="block font-medium">Year</label>
+        <select formControlName="year" class="mt-1 w-full rounded px-3 py-2">
+          <option value="">Choose</option>
+          <option *ngFor="let y of years" [value]="y">{{ y }}</option>
+        </select>
+      </div>
+      <div>
+        <label class="block font-medium">Drive Type</label>
+        <select formControlName="driveType" class="mt-1 w-full rounded px-3 py-2">
+          <option value="">Choose</option>
+          <option *ngFor="let d of driveTypes" [value]="d">{{ d }}</option>
+        </select>
+      </div>
+      <div>
+        <label class="block font-medium">Transmission</label>
+        <select formControlName="transmission" class="mt-1 w-full rounded px-3 py-2">
+          <option value="">Choose</option>
+          <option *ngFor="let t of transmissions" [value]="t">{{ t }}</option>
+        </select>
+      </div>
+
+      <!-- Fuel, Mileage, Engine, Cylinders -->
+      <div>
+        <label class="block font-medium">Fuel Type</label>
+        <select formControlName="fuelType" class="mt-1 w-full rounded px-3 py-2">
+          <option value="">Choose</option>
+          <option *ngFor="let f of fuelTypes" [value]="f">{{ f }}</option>
+        </select>
+      </div>
+      <div>
+        <label class="block font-medium">Mileage</label>
+        <input
+          formControlName="mileage"
+          type="number"
+          class="mt-1 w-full border rounded px-3 py-2"
+        />
+      </div>
+      <div>
+        <label class="block font-medium">Engine Size</label>
+        <input
+          formControlName="engineSize"
+          type="text"
+          class="mt-1 w-full border rounded px-3 py-2"
+        />
+      </div>
+      <div>
+        <label class="block font-medium">Cylinders</label>
+        <select formControlName="cylinders" class="mt-1 w-full rounded px-3 py-2">
+          <option value="">Choose</option>
+          <option *ngFor="let c of cylinders" [value]="c">{{ c }}</option>
+        </select>
+      </div>
+
+      <!-- Color, Doors, VIN -->
+      <div>
+        <label class="block font-medium">Color</label>
+        <select formControlName="color" class="mt-1 w-full rounded px-3 py-2">
+          <option value="">Choose</option>
+          <option *ngFor="let c of colors" [value]="c">{{ c }}</option>
+        </select>
+      </div>
+      <div>
+        <label class="block font-medium">Doors</label>
+        <select formControlName="doors" class="mt-1 w-full rounded px-3 py-2">
+          <option value="">Choose</option>
+          <option *ngFor="let d of doors" [value]="d">{{ d }}</option>
+        </select>
+      </div>
+      <div class="col-span-full">
+        <label class="block font-medium">VIN</label>
+        <input
+          formControlName="vin"
+          type="text"
+          class="mt-1 w-full border rounded px-3 py-2"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Tags & Images -->
+  <section>
+    <h3 class="text-xl font-semibold mb-4 border-b pb-2">Tags & Images</h3>
+    <div>
+      <label class="block font-medium">Tags / Keywords</label>
+      <input
+        formControlName="tags"
+        type="text"
+        placeholder="ex: car,red"
+        class="mt-1 w-full border rounded px-3 py-2"
+      />
+    </div>
+
+    <div class="mt-4">
+      <label class="block font-medium">Upload Images</label>
+      <input type="file" multiple (change)="onFileChange($event)" />
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section>
+    <h3 class="text-xl font-semibold mb-4 border-b pb-2">Location Details</h3>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div>
+        <label class="block font-medium">Address</label>
+        <input formControlName="address" class="mt-1 w-full border rounded px-3 py-2" />
+      </div>
+      <div>
+        <label class="block font-medium">City</label>
+        <input formControlName="city" class="mt-1 w-full border rounded px-3 py-2" />
+      </div>
+      <div>
+        <label class="block font-medium">State</label>
+        <input formControlName="state" class="mt-1 w-full border rounded px-3 py-2" />
+      </div>
+      <div>
+        <label class="block font-medium">Zip Code</label>
+        <input formControlName="zip" class="mt-1 w-full border rounded px-3 py-2" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Description -->
+  <section>
+    <h3 class="text-xl font-semibold mb-4 border-b pb-2">Description</h3>
+    <div>
+      <label class="block font-medium">Description</label>
+      <textarea
+        formControlName="description"
+        rows="4"
+        class="mt-1 w-full border rounded px-3 py-2"
+      ></textarea>
+    </div>
+  </section>
+
+  <!-- Features -->
+    <section [formGroup]="listingForm">
+    <h3 class="text-xl font-semibold mb-4 border-b pb-2">Features</h3>
+    <div formGroupName="features" class="grid sm:grid-cols-2 md:grid-cols-3 gap-2">
+        <label *ngFor="let ft of features" class="inline-flex items-center space-x-2">
+        <input type="checkbox" [formControlName]="ft" />
+        <span>{{ ft }}</span>
+        </label>
+    </div>
+    </section>
+
+  <!-- Contact Info -->
+  <section>
+    <h3 class="text-xl font-semibold mb-4 border-b pb-2">Contact Information</h3>
+    <div class="grid md:grid-cols-3 gap-4">
+      <div>
+        <label class="block font-medium">Name</label>
+        <input formControlName="contactName" class="mt-1 w-full border rounded px-3 py-2" />
+      </div>
+      <div>
+        <label class="block font-medium">Email</label>
+        <input formControlName="contactEmail" class="mt-1 w-full border rounded px-3 py-2" />
+      </div>
+      <div>
+        <label class="block font-medium">Phone</label>
+        <input formControlName="contactPhone" class="mt-1 w-full border rounded px-3 py-2" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Agree & Submit -->
+  <section class="flex items-center space-x-2">
+    <input type="checkbox" formControlName="agree" />
+    <label>I agree with Terms of Service & Privacy Policy.</label>
+  </section>
+
+  <div class="text-right">
+    <button
+      type="submit"
+      class="bg-blue-600 text-white px-6 py-2 rounded disabled:opacity-50"
+      [disabled]="listingForm.invalid"
+    >
+      📤 Save &amp; Publish Listing
+    </button>
+  </div>
+</form>
