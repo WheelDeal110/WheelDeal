@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
+import { CarListingComponent } from './car-listing/car-listing.component';
+import { MyListingsComponent } from './my-listings/my-listings.component';
 
 const routes: Routes = [
   {
@@ -12,6 +14,8 @@ const routes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent   },
       { path: 'settings', component: SettingsComponent   },
+      { path: 'carListing', component: CarListingComponent   },
+      { path: 'myListing', component: MyListingsComponent   },
     ]
   }
 ];
