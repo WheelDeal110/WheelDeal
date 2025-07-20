@@ -1,0 +1,10 @@
+<div *ngIf="show"
+     class="fixed top-4 right-4 
+            bg-white dark:bg-gray-800 border shadow-lg px-6 py-4 rounded-lg 
+            max-w-sm w-full z-50 transition-opacity duration-300 ease-in-out animate-fade"
+     [ngClass]="{
+        'border-green-500 text-green-700': type === 'success',
+        'border-red-500 text-red-700': type === 'error'
+     }">
+  <p class="text-center font-semibold">{{ message }}</p>
+</div>
