@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { DropdownService } from 'src/app/appServices/dropdown.service';
 
 @Component({
   selector: 'app-car-listing',
@@ -7,15 +8,15 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
   styleUrls: ['./car-listing.component.css']
 })
 export class CarListingComponent {
-   listingForm!: FormGroup;
+  listingForm!: FormGroup;
   conditions = ['New', 'Used'];
-  bodyTypes = ['Sedan', 'Compact', 'Coupe', 'Wagon'];
-  makes = ['BMW', 'Ferrari', 'Mercedes Benz', 'Hyundai', 'Nissan'];
-  models = ['A3', 'A4', 'A6', 'Q4', 'Q7'];
+  bodyTypes:any[] = [];
+  makes:any = [];
+  models:any = [];
   years = [2023, 2022, 2021, 2020, 2019];
-  driveTypes = ['Automatic', 'Semi Auto', 'Manual'];
+  driveTypes:any = [];
   transmissions = ['Automatic', 'Manual'];
-  fuelTypes = ['Diesel', 'Petrol'];
+  fuelTypes:any[] = [];
   cylinders = [4, 6];
   colors = ['Red', 'White', 'Black'];
   doors = [2, 4, 6];
@@ -26,7 +27,13 @@ export class CarListingComponent {
     'Antilock brakes', 'Android Auto'
   ];
 
-   constructor(private fb: FormBuilder) {}
+   constructor(private fb: FormBuilder, private ddServ:DropdownService) {
+    this.fetchBodyTypes();
+    this.fetchBrands();
+    this.fetchDriveType();
+    this.fetchFuelTypes();
+    this.fetchcarModels();
+   }
 
     ngOnInit(): void {
     const featuresControls = this.features.reduce((acc: { [key: string]: FormControl }, feature) => {
@@ -93,5 +100,35 @@ export class CarListingComponent {
     } else {
       alert('Please fix errors before submitting.');
     }
+  }
+
+ fetchBodyTypes() {
+      this.ddServ.getBodyType().pipe().subscribe((res: any) => {
+      this.bodyTypes = res;
+    });
+  }
+  
+  fetchBrands() {
+      this.ddServ.getBrand().pipe().subscribe((res: any) => {
+      this.makes = res;
+    });
+  }
+
+  fetchDriveType() {
+      this.ddServ.getDriveType().pipe().subscribe((res: any) => {
+      this.driveTypes = res;
+    });
+  }
+
+  fetchFuelTypes() {
+      this.ddServ.getFuelType().pipe().subscribe((res: any) => {
+      this.fuelTypes = res;
+    });
+  }
+
+  fetchcarModels() {
+      this.ddServ.getCarModels().pipe().subscribe((res: any) => {
+      this.models = res;
+    });
   }
 }

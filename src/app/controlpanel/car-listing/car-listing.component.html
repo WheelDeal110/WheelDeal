@@ -36,7 +36,7 @@
         <label class="block font-medium">Body Type</label>
         <select formControlName="bodyType" class="mt-1 w-full rounded px-3 py-2">
           <option value="">Choose</option>
-          <option *ngFor="let b of bodyTypes" [value]="b">{{ b }}</option>
+          <option *ngFor="let b of bodyTypes" [value]="b.id">{{ b.name }}</option>
         </select>
       </div>
 
@@ -45,7 +45,7 @@
         <label class="block font-medium">Make/Brand</label>
         <select formControlName="make" class="mt-1 w-full rounded px-3 py-2">
           <option value="">Choose</option>
-          <option *ngFor="let m of makes" [value]="m">{{ m }}</option>
+          <option *ngFor="let m of makes" [value]="m.id">{{ m.name }}</option>
         </select>
       </div>
 
@@ -54,7 +54,7 @@
         <label class="block font-medium">Model</label>
         <select formControlName="model" class="mt-1 w-full rounded px-3 py-2">
           <option value="">Choose</option>
-          <option *ngFor="let m of models" [value]="m">{{ m }}</option>
+          <option *ngFor="let m of models" [value]="m.id">{{ m.name }}</option>
         </select>
       </div>
     </div>
@@ -83,7 +83,7 @@
         <label class="block font-medium">Drive Type</label>
         <select formControlName="driveType" class="mt-1 w-full rounded px-3 py-2">
           <option value="">Choose</option>
-          <option *ngFor="let d of driveTypes" [value]="d">{{ d }}</option>
+          <option *ngFor="let d of driveTypes" [value]="d.id">{{ d.name }}</option>
         </select>
       </div>
       <div>
@@ -99,7 +99,7 @@
         <label class="block font-medium">Fuel Type</label>
         <select formControlName="fuelType" class="mt-1 w-full rounded px-3 py-2">
           <option value="">Choose</option>
-          <option *ngFor="let f of fuelTypes" [value]="f">{{ f }}</option>
+          <option *ngFor="let f of fuelTypes" [value]="f.id">{{ f.name }}</option>
         </select>
       </div>
       <div>
