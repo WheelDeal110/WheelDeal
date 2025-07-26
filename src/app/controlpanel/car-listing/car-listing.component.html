@@ -152,9 +152,9 @@
     </div>
   </section>
 
-  <!-- Tags & Images -->
   <section>
     <h3 class="text-xl font-semibold mb-4 border-b pb-2">Tags & Images</h3>
+
     <div>
       <label class="block font-medium">Tags / Keywords</label>
       <input
@@ -166,10 +166,33 @@
     </div>
 
     <div class="mt-4">
-      <label class="block font-medium">Upload Images</label>
-      <input type="file" multiple (change)="onFileChange($event)" />
+      <label class="block font-medium mb-2">Upload Images</label>
+
+      <div class="flex gap-3 flex-wrap items-center">
+        <div
+          *ngFor="let img of imagePreviews; let i = index"
+          class="w-20 h-20 rounded overflow-hidden border relative"
+        >
+          <img [src]="img" alt="preview" class="w-full h-full object-cover" />
+        </div>
+
+        <div
+          class="w-20 h-20 border-dashed border-2 border-gray-400 flex items-center justify-center text-2xl text-gray-500 cursor-pointer hover:bg-gray-100"
+          (click)="fileInput.click()"
+        >
+          +
+          <input
+            #fileInput
+            type="file"
+            multiple
+            class="hidden"
+            (change)="onFileChange($event)"
+          />
+        </div>
+      </div>
     </div>
   </section>
+
 
   <!-- Location -->
   <section>

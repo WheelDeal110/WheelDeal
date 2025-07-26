@@ -21,6 +21,7 @@ export class CarListingComponent {
   colors:any[] = [];
   doors = [2, 4, 6];
   features:any[] = [];
+  imagePreviews: string[] = [];
 
    constructor(private fb: FormBuilder, private ddServ:DropdownService) {
     this.fetchBodyTypes();
@@ -90,8 +91,21 @@ export class CarListingComponent {
   }
 
   onFileChange(event: any) {
-    const files = event.target.files;
-    this.listingForm.patchValue({ images: files });
+    const files: FileList = event.target.files;
+
+    if (files && files.length > 0) {
+      Array.from(files).forEach((file: File) => {
+        const reader = new FileReader();
+
+        reader.onload = (e: any) => {
+          this.imagePreviews.push(e.target.result); 
+        };
+
+        reader.readAsDataURL(file);
+      });
+
+      this.listingForm.patchValue({ images: files });
+    }
   }
 
   onSubmit() {
