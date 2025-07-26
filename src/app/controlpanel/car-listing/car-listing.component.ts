@@ -9,23 +9,18 @@ import { DropdownService } from 'src/app/appServices/dropdown.service';
 })
 export class CarListingComponent {
   listingForm!: FormGroup;
-  conditions = ['New', 'Used'];
+  conditions:any[] = [];
   bodyTypes:any[] = [];
   makes:any = [];
   models:any = [];
-  years = [2023, 2022, 2021, 2020, 2019];
+  years:any[] = [];;
   driveTypes:any = [];
-  transmissions = ['Automatic', 'Manual'];
+  transmissions:any[] = [];
   fuelTypes:any[] = [];
-  cylinders = [4, 6];
-  colors = ['Red', 'White', 'Black'];
+  cylinders:any[] = [];
+  colors:any[] = [];
   doors = [2, 4, 6];
-  features = [
-    'Multi-zone A/C', 'Adaptive Cruise Control', 'Sunroof', 
-    'Heated front seats', 'Cooled Seats', 'Panoramic roof',
-    'Navigation system', 'Keyless Start', 'Bluetooth',
-    'Antilock brakes', 'Android Auto'
-  ];
+  features:any[] = [];
 
    constructor(private fb: FormBuilder, private ddServ:DropdownService) {
     this.fetchBodyTypes();
@@ -33,6 +28,12 @@ export class CarListingComponent {
     this.fetchDriveType();
     this.fetchFuelTypes();
     this.fetchcarModels();
+    this.fetchConditions();
+    this.fetchyears();
+    this.fetchColors();
+    this.fetchCarCylinder();
+    this.fetchFeatures();
+    this.fetchTransmission();
    }
 
     ngOnInit(): void {
@@ -129,6 +130,42 @@ export class CarListingComponent {
   fetchcarModels() {
       this.ddServ.getCarModels().pipe().subscribe((res: any) => {
       this.models = res;
+    });
+  }
+
+  fetchConditions() {
+      this.ddServ.getConditions().pipe().subscribe((res: any) => {
+      this.conditions = res;
+    });
+  }
+
+  fetchyears() {
+      this.ddServ.getyears().pipe().subscribe((res: any) => {
+      this.years = res;
+    });
+  }
+
+  fetchColors() {
+      this.ddServ.getcarColors().pipe().subscribe((res: any) => {
+      this.colors = res;
+    });
+  }
+
+  fetchCarCylinder() {
+      this.ddServ.getCarCylinder().pipe().subscribe((res: any) => {
+      this.cylinders = res;
+    });
+  }
+
+  fetchFeatures() {
+      this.ddServ.getFeatures().pipe().subscribe((res: any) => {
+      this.features = res;
+    });
+  }
+
+  fetchTransmission() {
+      this.ddServ.gettransmission().pipe().subscribe((res: any) => {
+      this.transmissions = res;
     });
   }
 }

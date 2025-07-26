@@ -33,5 +33,29 @@ export class DropdownService {
     getCarModels(): Observable<any> {
       return this.http.get(this.apiUrl + 'getCarModels');
     }
+
+    getConditions(): Observable<any> {
+      return this.http.get(this.apiUrl + 'GetCondition');
+    }
+
+    getyears(): Observable<any> {
+      return this.http.get(this.apiUrl + 'GetAllYear');
+    }
+
+    getcarColors(): Observable<any> {
+      return this.http.get(this.apiUrl + 'GetAllCarColors');
+    }
+
+    getCarCylinder(): Observable<any> {
+      return this.http.get(this.apiUrl + 'GetAllCarCylinder');
+    }
+
+    getFeatures(): Observable<any> {
+      return this.http.get(this.apiUrl + 'GetAllFeatures');
+    }
+
+    gettransmission(): Observable<any> {
+      return this.http.get(this.apiUrl + 'GetTransmission');
+    }
 }
 
