@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/appServices/auth.service';
+import { BaseApiService } from 'src/app/appServices/base-api.service';
 
 @Component({
   selector: 'app-settings',
@@ -15,21 +17,20 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   `]
 
 })
-export class SettingsComponent {
-    settingsForm: FormGroup;
+export class SettingsComponent implements OnInit {
+  settingsForm: FormGroup;
   passwordForm: FormGroup;
   emailForm: FormGroup;
-
+  loadingUserInfo = false;
   showPasswordModal = false;
   showEmailModal = false;
   previewUrl: string | ArrayBuffer | null = null;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private baseApi:BaseApiService,private auth:AuthService) {
     this.settingsForm = this.fb.group({
-      firstName: ['John', Validators.required],
-      lastName: ['Doe', Validators.required],
-      email: ['you@example.com', [Validators.required, Validators.email]],
-      businessMode: [false]
+      name: ['', Validators.required], 
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', Validators.required]
     });
 
     this.passwordForm = this.fb.group({
@@ -41,6 +42,11 @@ export class SettingsComponent {
     this.emailForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]]
     });
+
+  }
+
+  ngOnInit(): void {
+    this.fetchUser();
   }
 
   openPasswordModal() {
@@ -95,5 +101,32 @@ export class SettingsComponent {
       };
       reader.readAsDataURL(file);
     }
+  }
+
+  fetchUser() {
+    const userId = this.auth.getUserId();
+    if (!userId) {
+      return;
+    }
+
+    this.loadingUserInfo = true;
+    this.baseApi.getUserInfo(Number(userId)).subscribe({
+      next: (res: any) => {
+        if (res) {
+          console.log(res)
+          this.settingsForm.patchValue({
+            name: res.name || '',
+            email: res.email || '',
+            phone: res.phone || ''
+          });
+        }
+        this.loadingUserInfo = false;
+      },
+      error: (err) => {
+        console.error('Error fetching user info', err);
+        this.loadingUserInfo = false;
+        alert('Failed to load user info');
+      }
+    });
   }
 }
