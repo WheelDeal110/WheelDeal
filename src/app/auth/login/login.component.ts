@@ -49,6 +49,7 @@ export class LoginComponent {
       if (res?.isSuccess) {
         this.auth.setToken(res.result.jwtToken);
         this.alertRef.showAlert('success', res?.messages);
+        this.auth.setUserId(res?.result?.user?.id);
         this.router.navigate(['/controlPanel']);
         this.loginForm.reset();
       }
